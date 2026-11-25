@@ -3,7 +3,7 @@
   "name": "hogarya",
   "main": ".open-next/worker.js",
   "upload_source_maps": true,
-  "compatibility_date": "2026-11-25",
+  "compatibility_date": "2026-11-23",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": ".open-next/assets",
@@ -11,5 +11,7 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  // Required by `wrangler preview`, which Workers Builds runs on branches other than production.
+  "previews": {}
 }
