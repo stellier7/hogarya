@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #172b28;
+  --color-forest-deep: #101e1c;
+  --color-gold: #b89562;
+  --color-gold-deep: #7d6240;
+  --color-ivory: #f5f2eb;
+  --color-ivory-deep: #e7e1d4;
+  --color-charcoal: #292c2b;
+  --color-line: rgb(23 43 40 / 14%);
+  --font-display: var(--font-playfair), "Times New Roman", serif;
+  --font-sans: var(--font-montserrat), "Helvetica Neue", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+}
+
+::selection {
+  background: #172b28;
+  color: #f5f2eb;
+}
+
+:focus-visible {
+  outline: 2px solid #b89562;
+  outline-offset: 3px;
+}
+
+@layer components {
+.kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #172b28;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid rgb(23 43 40 / 16%);
+  background: transparent;
+  padding: 0.85rem 0.9rem;
+  font-size: 0.95rem;
+  color: #292c2b;
+}
+
+.field:focus {
+  border-color: #b89562;
+  outline: none;
+}
+
+.btn {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  background: #172b28;
+  padding: 0.75rem 1.4rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f5f2eb;
+}
+
+.btn:hover {
+  background: #101e1c;
+}
+
+.btn-line {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #172b28;
+  padding: 0.75rem 1.4rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #172b28;
+  background: transparent;
+}
+
+.btn-line:hover {
+  background: #172b28;
+  color: #f5f2eb;
+}
+
+.btn:disabled,
+.btn-line:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.operation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgb(23 43 40 / 16%);
+}
+
+.operation input {
+  position: absolute;
+  opacity: 0;
+}
+
+.operation span {
+  display: grid;
+  min-height: 3rem;
+  place-items: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.operation input:checked + span {
+  background: #172b28;
+  color: #f5f2eb;
+}
+
+.operation input:focus-visible + span {
+  outline: 2px solid #b89562;
+  outline-offset: -2px;
+}
+}
