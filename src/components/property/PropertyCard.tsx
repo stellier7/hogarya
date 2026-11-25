@@ -49,7 +49,7 @@ export function PropertyCard({
           <span>{operationLabel(property.operation)}</span>
           <span>{kindLabel(property.kind)}</span>
         </p>
-        <p className="display mt-3 text-3xl text-forest">{formatPrice(property.price, property.operation)}</p>
+        <p className="display mt-3 text-3xl text-forest">{formatPrice(property.price, property.operation, property.currency)}</p>
         <h3 className="mt-2 text-lg leading-snug">
           <Link href={`/propiedades/${property.slug}`} className="hover:text-forest">{property.title}</Link>
         </h3>

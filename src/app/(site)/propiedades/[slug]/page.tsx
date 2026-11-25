@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { InquiryForm } from "@/components/forms/InquiryForm";
 import { Gallery } from "@/components/property/Gallery";
 import { PropertyCard } from "@/components/property/PropertyCard";
-import { countLabel, formatArea, formatDate, formatPrice } from "@/domain/format";
+import { countLabel, formatArea, formatDate, formatPrice, phoneLinks } from "@/domain/format";
 import { kindLabel, operationLabel, operationPath } from "@/domain/labels";
 import { platformWhatsapp, siteUrl } from "@/domain/site";
 import { agencyById, agentById, findPublicProperty, loadCatalog, similarProperties } from "@/server/catalog";
@@ -36,8 +36,32 @@ export default async function PropertyPage({ params }: Props) {
   const agency = agencyById(store, property.agencyId);
   const agent = agentById(store, property.agentId);
   const similar = similarProperties(store, property);
-  const whatsapp = agent?.whatsappE164 || platformWhatsapp();
+  const phones = phoneLinks(agent?.phone ?? agency?.phone);
+  const whatsapp = phones.length === 0 ? agent?.whatsappE164 || platformWhatsapp() : "";
   const message = `Hola, quiero información sobre ${property.referenceCode}, ${property.title}.`;
+  const listingSchema = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    name: property.title,
+    description: property.description,
+    url: `${siteUrl()}/propiedades/${property.slug}`,
+    image: property.images.map((image) => `${siteUrl()}${image.src}`),
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: property.zone,
+      addressRegion: `${property.city}, ${property.department}`,
+      addressCountry: "HN",
+    },
+    ...(property.demo || property.price == null
+      ? {}
+      : {
+          offers: {
+            "@type": "Offer",
+            price: property.price,
+            priceCurrency: property.currency ?? "HNL",
+          },
+        }),
+  };
   const specs = [
     ["Operación", operationLabel(property.operation)],
     ["Tipo", kindLabel(property.kind)],
@@ -45,12 +69,13 @@ export default async function PropertyPage({ params }: Props) {
     ["Baños", property.bathrooms != null ? countLabel(property.bathrooms, "baño", "baños") : "—"],
     ["Estacionamientos", property.parking != null ? countLabel(property.parking, "estacionamiento", "estacionamientos") : "—"],
     ["Construcción", formatArea(property.constructionArea)],
-    ["Terreno", formatArea(property.lotArea)],
+    ["Terreno", formatArea(property.lotArea, property.lotAreaUnit)],
     ["Publicada", property.publishedAt ? formatDate(property.publishedAt) : "—"],
   ];
 
   return (
     <article className="pb-24 md:pb-0">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(listingSchema) }} />
       <Gallery images={property.images} title={property.title} />
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
         <div>
@@ -64,7 +89,7 @@ export default async function PropertyPage({ params }: Props) {
           <p className="kicker mt-6">{property.demo ? "Dato de prueba" : "Publicación"} · {property.referenceCode}</p>
           <h1 className="display mt-3 text-4xl text-forest md:text-6xl">{property.title}</h1>
           <p className="mt-3 text-sm">{property.zone}, {property.city}, {property.department}</p>
-          <p className="display mt-6 text-4xl text-forest">{formatPrice(property.price, property.operation)}</p>
+          <p className="display mt-6 text-4xl text-forest">{formatPrice(property.price, property.operation, property.currency)}</p>
           {property.verification ? (
             <p className="mt-4 text-sm">Verificada el {formatDate(property.verification.at)}.</p>
           ) : (
@@ -102,7 +127,19 @@ export default async function PropertyPage({ params }: Props) {
             <p className="mt-3 text-sm leading-6 text-charcoal/75">{agent?.bio}</p>
             {agent?.demo || agency?.demo ? <p className="mt-3 text-xs uppercase tracking-[0.14em]">Perfil de prueba</p> : null}
             {agency ? <Link href={`/inmobiliarias/${agency.slug}`} className="mt-4 inline-block text-sm underline">Ver inmobiliaria</Link> : null}
-            {whatsapp ? (
+            {phones.length > 0 ? (
+              <ul className="mt-6 grid gap-3">
+                {phones.map((phone) => (
+                  <li key={phone.tel} className="flex items-center justify-between gap-3 text-sm">
+                    <span>{phone.label}</span>
+                    <span className="flex gap-3">
+                      <a className="underline" href={phone.tel}>Llamar</a>
+                      <a className="underline" href={`${phone.whatsapp}?text=${encodeURIComponent(message)}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : whatsapp ? (
               <a className="btn mt-6 w-full" href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`} target="_blank" rel="noopener noreferrer">
                 WhatsApp
               </a>
@@ -128,8 +165,9 @@ export default async function PropertyPage({ params }: Props) {
           </div>
         </section>
       ) : null}
-      <div className="fixed inset-x-0 bottom-0 z-30 rounded-t-[1.5rem] border-t border-line bg-ivory p-3 shadow-[0_-12px_30px_rgb(23_43_40/8%)] md:hidden">
-        <a href="#solicitud" className="btn w-full">Solicitar información</a>
+      <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 rounded-t-[1.5rem] border-t border-line bg-ivory p-3 shadow-[0_-12px_30px_rgb(23_43_40/8%)] md:hidden">
+        {phones[0] ? <a className="btn w-full" href={phones[0].tel}>Llamar</a> : null}
+        <a href="#solicitud" className={phones[0] ? "btn-line w-full" : "btn col-span-2 w-full"}>Solicitar información</a>
       </div>
       <p className="sr-only">{siteUrl()}/propiedades/{property.slug}</p>
     </article>
