@@ -37,7 +37,7 @@ export default async function EditPropertyPage({ params, searchParams }: Props) 
         <h2 className="display text-3xl text-forest">Fotografías</h2>
         <ul className="mt-4 grid gap-3">
           {property.images.map((image) => (
-            <li key={image.src} className="flex items-center justify-between gap-4 border-t border-line py-3 text-sm">
+            <li key={image.src} className="sheet flex items-center justify-between gap-4 px-4 py-3 text-sm">
               <span className="truncate">{image.src}</span>
               <form action={deletePropertyImage}>
                 <input type="hidden" name="id" value={property.id} />
@@ -49,7 +49,7 @@ export default async function EditPropertyPage({ params, searchParams }: Props) 
         </ul>
         <form action={uploadPropertyImage} className="mt-4 flex flex-wrap items-center gap-3">
           <input type="hidden" name="id" value={property.id} />
-          <input name="foto" type="file" accept="image/jpeg,image/png,image/webp" required />
+          <input name="foto" type="file" accept="image/jpeg,image/png,image/webp" required className="text-sm file:mr-3 file:rounded-full file:border-0 file:bg-forest file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.14em] file:text-ivory" />
           <button className="btn-line" type="submit">Agregar fotografía</button>
         </form>
       </section>
@@ -94,7 +94,7 @@ export default async function EditPropertyPage({ params, searchParams }: Props) 
           <h2 className="display text-3xl text-forest">Historial</h2>
           <ul className="mt-4 grid gap-3 text-sm">
             {history.map((event) => (
-              <li key={event.id}>{event.summary}</li>
+              <li key={event.id} className="sheet px-4 py-3">{event.summary}</li>
             ))}
           </ul>
         </section>

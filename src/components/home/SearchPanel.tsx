@@ -3,7 +3,7 @@ import { zones } from "@/domain/zones";
 
 export function SearchPanel() {
   return (
-    <form action="/propiedades" method="get" className="border border-line bg-ivory p-4 shadow-[0_16px_40px_rgb(23_43_40/8%)] md:p-6" role="search" aria-label="Buscar propiedades">
+    <form action="/propiedades" method="get" className="sheet bg-ivory p-4 shadow-[0_16px_40px_rgb(23_43_40/8%)] md:p-6" role="search" aria-label="Buscar propiedades">
       <div className="grid gap-4 lg:grid-cols-[auto_1fr_1fr_0.7fr_0.7fr_auto] lg:items-end">
         <fieldset className="min-w-44">
           <legend className="kicker mb-2">Operación</legend>

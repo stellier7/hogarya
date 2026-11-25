@@ -15,11 +15,11 @@ export function FilterDisclosure({ children }: { children: ReactNode }) {
 
   return (
     <details
-      className="border border-line p-4 lg:border-0 lg:p-0"
+      className="sheet p-4 lg:rounded-none lg:border-0 lg:p-0"
       open={open}
       onToggle={(event) => setOpen(event.currentTarget.open)}
     >
-      <summary className="cursor-pointer list-none text-sm uppercase tracking-[0.16em] lg:hidden">Filtrar</summary>
+      <summary className="cursor-pointer list-none rounded-full text-sm uppercase tracking-[0.16em] lg:hidden">Filtrar</summary>
       <div className="mt-4 grid gap-4 lg:mt-0">{children}</div>
     </details>
   );

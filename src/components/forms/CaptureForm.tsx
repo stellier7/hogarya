@@ -9,7 +9,7 @@ import { Field, Honeypot } from "./InquiryForm";
 export function CaptureForm() {
   const [state, action, pending] = useActionState(submitCapture, idleFormState);
   if (state.status === "success") {
-    return <p role="status" className="border border-line bg-white px-5 py-6 text-sm leading-6">{state.message}</p>;
+    return <p role="status" className="sheet bg-white px-5 py-6 text-sm leading-6">{state.message}</p>;
   }
   return (
     <form action={action} className="relative grid gap-4" noValidate>
@@ -44,7 +44,7 @@ export function CaptureForm() {
       </label>
       <label className="grid gap-2 text-sm">
         <span className="kicker">Fotografías opcionales</span>
-        <input name="fotos" type="file" accept="image/jpeg,image/png,image/webp" multiple className="text-sm" />
+        <input name="fotos" type="file" accept="image/jpeg,image/png,image/webp" multiple className="rounded-full text-sm file:mr-3 file:rounded-full file:border-0 file:bg-forest file:px-4 file:py-2 file:text-xs file:uppercase file:tracking-[0.14em] file:text-ivory" />
         <span className="text-xs text-charcoal/70">Hasta 4 imágenes JPG, PNG o WebP, de menos de 3 MB cada una.</span>
       </label>
       <button className="btn" type="submit" disabled={pending}>{pending ? "Enviando" : "Enviar solicitud"}</button>

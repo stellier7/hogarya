@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <article className="mx-auto max-w-3xl px-5 py-16">
       <p className="kicker">Nosotros</p>
-      <h1 className="display mt-3 text-5xl text-forest">Una plataforma, varias inmobiliarias</h1>
+      <h1 className="enter display mt-3 text-5xl text-forest">Una plataforma, varias inmobiliarias</h1>
       <div className="mt-8 grid gap-5 text-sm leading-7">
         <p>
           Hogar Ya conecta a quien busca comprar o alquilar en Honduras con el agente autorizado que comercializa cada propiedad. También recibe solicitudes de propietarios que quieren que su inmueble se comercialice, sin abrir la publicación al público general.

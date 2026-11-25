@@ -12,7 +12,7 @@ export default async function FeaturedPage() {
     <div>
       <p className="kicker">Portada</p>
       <h1 className="display mt-3 text-4xl text-forest">Destacadas</h1>
-      <ul className="mt-8 divide-y divide-line border-y border-line">
+      <ul className="sheet mt-8 divide-y divide-line overflow-hidden px-4">
         {properties.map((property) => (
           <li key={property.id} className="flex items-center justify-between gap-4 py-4">
             <div>

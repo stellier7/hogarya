@@ -22,7 +22,7 @@ export default async function AccessPage({ searchParams }: Props) {
       </div>
       <ul className="grid gap-3 text-sm">
         {store.users.map((account) => (
-          <li key={account.id} className="flex flex-wrap items-center justify-between gap-3 border-t border-line py-3">
+          <li key={account.id} className="sheet flex flex-wrap items-center justify-between gap-3 px-4 py-3">
             <span>{account.name} · {account.email} · {account.role} · {account.active ? "activo" : "suspendido"}</span>
             <form action={setUserActive}>
               <input type="hidden" name="id" value={account.id} />

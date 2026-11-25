@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal } from "@/components/motion/Reveal";
 import { countLabel, formatPrice } from "@/domain/format";
 import { kindLabel, operationLabel } from "@/domain/labels";
 import type { Agency, Property } from "@/domain/types";
@@ -26,8 +27,9 @@ export function PropertyCard({
   const wide = layout === "lista";
 
   return (
-    <article className={wide ? "grid gap-6 border-t border-line py-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:items-center" : "group"}>
-      <Link href={`/propiedades/${property.slug}`} className={`relative block overflow-hidden bg-forest ${wide ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
+    <Reveal>
+    <article className={wide ? "grid gap-6 border-t border-line py-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:items-center" : "group transition duration-300 hover:-translate-y-1 motion-reduce:transform-none"}>
+      <Link href={`/propiedades/${property.slug}`} className={`media relative block bg-forest ${wide ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
         {image ? (
           <Image
             src={image.src}
@@ -56,5 +58,6 @@ export function PropertyCard({
         <p className="mt-4 text-[0.68rem] uppercase tracking-[0.16em] text-forest">{agency?.tradeName ?? "Responsable por asignar"}</p>
       </div>
     </article>
+    </Reveal>
   );
 }

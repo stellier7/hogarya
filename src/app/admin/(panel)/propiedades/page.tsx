@@ -26,13 +26,13 @@ export default async function AdminPropertiesPage({ searchParams }: Props) {
         <Link href="/admin/propiedades/nueva" className="btn">Nueva propiedad</Link>
       </div>
       <div className="mt-6"><AdminNotice code={notice} /></div>
-      <div className="mt-6 flex flex-wrap gap-3 text-xs uppercase tracking-[0.14em]">
-        <Link href="/admin/propiedades">Todas</Link>
+      <div className="mt-6 flex flex-wrap gap-2 text-xs uppercase tracking-[0.14em]">
+        <Link className="chip" href="/admin/propiedades" aria-current={status ? undefined : "page"}>Todas</Link>
         {publicationStatuses.map((item) => (
-          <Link key={item} href={`/admin/propiedades?estado=${item}`}>{statusLabel(item)}</Link>
+          <Link key={item} className="chip" href={`/admin/propiedades?estado=${item}`} aria-current={status === item ? "page" : undefined}>{statusLabel(item)}</Link>
         ))}
       </div>
-      <ul className="mt-6 divide-y divide-line border-y border-line">
+      <ul className="sheet mt-6 divide-y divide-line overflow-hidden px-4">
         {properties.map((property) => (
           <li key={property.id} className="grid gap-2 py-4 md:grid-cols-[1fr_auto_auto] md:items-center">
             <div>

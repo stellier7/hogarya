@@ -21,7 +21,7 @@ export default async function AgenciesAdminPage({ searchParams }: Props) {
       </div>
       <ul className="grid gap-4">
         {store.agencies.map((agency) => (
-          <li key={agency.id} className="border border-line p-4 text-sm">
+          <li key={agency.id} className="sheet p-4 text-sm">
             <p className="text-lg">{agency.tradeName}</p>
             <p className="mt-1">{agency.authorized ? "Autorizada" : "Sin autorización"} · {agency.demo ? "prueba" : "real"}</p>
           </li>

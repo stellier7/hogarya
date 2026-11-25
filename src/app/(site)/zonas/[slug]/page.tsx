@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Parallax } from "@/components/motion/Parallax";
 import { PropertyCard } from "@/components/property/PropertyCard";
 import { isPublicProperty } from "@/domain/filters";
 import { kindPlural, propertyKinds } from "@/domain/labels";
@@ -36,10 +37,12 @@ export default async function ZonePage({ params }: Props) {
 
   return (
     <article>
-      <section className="relative min-h-[46vh] bg-forest text-ivory">
-        <Image src={zone.image} alt={`Imagen de referencia para ${zone.city}. No es una fotografía de la ciudad.`} fill priority sizes="100vw" className="object-cover opacity-75" />
+      <section className="relative min-h-[46vh] overflow-hidden rounded-b-[2.5rem] bg-forest text-ivory">
+        <Parallax strength={48}>
+          <Image src={zone.image} alt={`Imagen de referencia para ${zone.city}. No es una fotografía de la ciudad.`} fill priority sizes="100vw" className="object-cover opacity-75" />
+        </Parallax>
         <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/40 to-transparent" />
-        <div className="relative mx-auto flex min-h-[46vh] max-w-6xl flex-col justify-end px-5 py-12">
+        <div className="enter relative mx-auto flex min-h-[46vh] max-w-6xl flex-col justify-end px-5 py-12">
           <p className="text-[0.72rem] uppercase tracking-[0.22em]">{zone.department}</p>
           <h1 className="display mt-3 text-5xl md:text-6xl">{zone.city}</h1>
           <p className="mt-4 max-w-xl text-sm leading-6 text-ivory/85">{zone.summary}</p>

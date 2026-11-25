@@ -18,22 +18,22 @@ export default function BrandPage() {
   return (
     <article className="mx-auto max-w-6xl px-5 py-16">
       <p className="kicker">Identidad provisional</p>
-      <h1 className="display mt-3 text-5xl text-forest">Sistema visual de Hogar Ya</h1>
+      <h1 className="enter display mt-3 text-5xl text-forest">Sistema visual de Hogar Ya</h1>
       <p className="mt-4 max-w-2xl text-sm leading-6">
         El símbolo es un volumen arquitectónico provisional. Cuando exista el SVG oficial, se reemplaza el componente del logo sin cambiar el resto del sitio. No hay teléfono, correo ni usuario de Instagram confirmados.
       </p>
 
       <section className="mt-14 grid gap-8 border-t border-line pt-10 md:grid-cols-3">
-        <div className="border border-line bg-ivory p-8"><Logo /></div>
-        <div className="border border-line bg-forest p-8"><Logo tone="ivory" variant="vertical" /></div>
-        <div className="grid place-items-center border border-line p-8 text-forest"><Logo variant="mark" /></div>
+        <div className="sheet bg-ivory p-8"><Logo /></div>
+        <div className="sheet bg-forest p-8"><Logo tone="ivory" variant="vertical" /></div>
+        <div className="sheet grid place-items-center p-8 text-forest"><Logo variant="mark" /></div>
       </section>
 
       <section className="mt-14">
         <h2 className="display text-3xl text-forest">Color y tipo</h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-4">
           {colors.map((color) => (
-            <div key={color.value} className={`${color.bg} ${color.text} border border-line p-5`}>
+            <div key={color.value} className={`${color.bg} ${color.text} sheet p-5`}>
               <p className="text-sm">{color.name}</p>
               <p className="mt-6 text-xs tracking-[0.14em]">{color.value}</p>
             </div>
@@ -46,7 +46,7 @@ export default function BrandPage() {
       <section className="mt-16 grid gap-8 lg:grid-cols-2">
         <div>
           <h2 className="display text-3xl text-forest">Publicación</h2>
-          <div className="relative mt-4 aspect-square overflow-hidden bg-forest text-ivory">
+          <div className="media relative mt-4 aspect-square bg-forest text-ivory">
             <div className="absolute inset-0 bg-[url('/demo/casa-lomas-1.jpg')] bg-cover bg-center opacity-80" />
             <div className="absolute inset-0 bg-gradient-to-t from-forest via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -59,7 +59,7 @@ export default function BrandPage() {
         </div>
         <div>
           <h2 className="display text-3xl text-forest">Historia</h2>
-          <div className="relative mx-auto mt-4 aspect-[9/16] max-w-xs overflow-hidden bg-forest text-ivory">
+          <div className="media relative mx-auto mt-4 aspect-[9/16] max-w-xs bg-forest text-ivory">
             <div className="absolute inset-0 bg-[url('/demo/hero.jpg')] bg-cover bg-center opacity-80" />
             <div className="absolute inset-x-0 bottom-0 p-5">
               <Mark className="h-8 w-8" />
@@ -70,14 +70,14 @@ export default function BrandPage() {
       </section>
 
       <section className="mt-16 grid gap-8 md:grid-cols-2">
-        <div className="border border-line p-6">
+        <div className="sheet p-6">
           <p className="kicker">Tarjeta</p>
           <div className="mt-6 flex items-center justify-between gap-4">
             <Logo />
             <p className="text-right text-xs leading-5">Bienes raíces · Honduras<br />Contacto oficial por confirmar</p>
           </div>
         </div>
-        <div className="grid place-items-center bg-forest px-6 py-12 text-center text-ivory">
+        <div className="grid place-items-center rounded-[1.5rem] bg-forest px-6 py-12 text-center text-ivory">
           <p className="text-[0.72rem] uppercase tracking-[0.22em]">Se vende</p>
           <p className="display mt-3 text-4xl">HOGAR YA</p>
           <span className="mt-4 block h-px w-10 bg-gold" />
@@ -85,7 +85,7 @@ export default function BrandPage() {
         </div>
       </section>
 
-      <section className="mt-16 border border-line p-6">
+      <section className="sheet mt-16 p-6">
         <h2 className="display text-3xl text-forest">Firma y redes</h2>
         <div className="mt-6 grid gap-6 md:grid-cols-[auto_1fr] md:items-center">
           <Logo />
@@ -105,7 +105,7 @@ export default function BrandPage() {
         </div>
       </section>
 
-      <section className="relative mt-16 min-h-56 overflow-hidden">
+      <section className="media relative mt-16 min-h-56">
         <div className="absolute inset-0 bg-[url('/demo/interior-1.jpg')] bg-cover bg-center" />
         <p className="absolute bottom-4 right-4 text-xs uppercase tracking-[0.2em] text-ivory">Hogar Ya</p>
       </section>

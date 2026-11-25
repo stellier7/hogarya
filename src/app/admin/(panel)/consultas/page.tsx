@@ -24,7 +24,7 @@ export default async function LeadsPage({ searchParams }: Props) {
         {leads.map((lead) => {
           const property = store.properties.find((item) => item.id === lead.propertyId);
           return (
-            <li key={lead.id} className="border border-line p-4 text-sm">
+            <li key={lead.id} className="sheet p-4 text-sm">
               <p className="text-lg">{lead.name}</p>
               <p>{lead.email} · {lead.phone}</p>
               <p className="mt-2">{lead.message}</p>
