@@ -38,9 +38,22 @@ export default async function HomePage() {
   const featured = published.filter((property) => property.featured);
   const featuredIds = new Set(featured.map((property) => property.id));
   const recent = published.filter((property) => !featuredIds.has(property.id)).slice(0, 4);
-  const lead = featured[0];
-  const side = featured.slice(1, 3);
-  const belowLead = featured.slice(3);
+  const hatilloLeft = featured.find((property) => property.slug === "casa-el-hatillo-km-7");
+  const hatilloRight = featured.find((property) => property.slug === "casa-el-hatillo-km-7-5");
+  const otherFeatured = featured.filter((property) => property !== hatilloLeft && property !== hatilloRight);
+  const diagonal = hatilloLeft != null && hatilloRight != null && otherFeatured.length >= 2;
+  const featuredSlots = diagonal
+    ? [
+        { property: hatilloLeft, className: "order-1 lg:col-span-7" },
+        { property: otherFeatured[0], className: "order-2 lg:col-span-5" },
+        { property: otherFeatured[1], className: "order-3 lg:col-span-5" },
+        { property: hatilloRight, className: "order-4 lg:col-span-7" },
+        ...otherFeatured.slice(2).map((property) => ({ property, className: "lg:col-span-6" })),
+      ]
+    : featured.map((property, index) => ({
+        property,
+        className: index % 3 === 0 ? "lg:col-span-7" : "lg:col-span-5",
+      }));
   const agencies = new Map(store.agencies.map((agency) => [agency.id, agency]));
   const jsonLd = {
     "@context": "https://schema.org",
@@ -89,26 +102,12 @@ export default async function HomePage() {
           <Link href="/propiedades" className="text-[0.72rem] uppercase tracking-[0.16em] transition-colors duration-300 hover:text-gold-deep">Ver catálogo</Link>
         </div>
         </Reveal>
-        <div className="mt-10 flex flex-col gap-10 lg:grid lg:grid-cols-12 lg:items-start">
-          <div className="contents lg:col-span-7 lg:grid lg:content-start lg:gap-10">
-            {lead ? (
-              <div className="order-1">
-                <PropertyCard property={lead} agency={agencies.get(lead.agencyId)} />
-              </div>
-            ) : null}
-            {belowLead.map((property) => (
-              <div key={property.id} className="order-4">
-                <PropertyCard property={property} agency={agencies.get(property.agencyId)} />
-              </div>
-            ))}
-          </div>
-          <div className="contents lg:col-span-5 lg:grid lg:content-start lg:gap-10">
-            {side.map((property, index) => (
-              <div key={property.id} className={index === 0 ? "order-2" : "order-3"}>
-                <PropertyCard property={property} agency={agencies.get(property.agencyId)} />
-              </div>
-            ))}
-          </div>
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-start">
+          {featuredSlots.map((slot) => (
+            <div key={slot.property.id} className={slot.className}>
+              <PropertyCard property={slot.property} agency={agencies.get(slot.property.agencyId)} />
+            </div>
+          ))}
         </div>
       </section>
 
