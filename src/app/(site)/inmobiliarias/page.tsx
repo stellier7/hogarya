@@ -14,12 +14,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function AgenciesPage() {
   const store = await loadCatalog();
-  const agencies = store.agencies.filter((agency) => agency.authorized);
+  const agencies = store.agencies.filter((agency) =>
+    agency.authorized && store.properties.some((property) => property.agencyId === agency.id && isPublicProperty(property, store.agencies)),
+  );
   return (
     <div className="mx-auto max-w-6xl px-5 py-16">
       <p className="kicker">Socios</p>
       <h1 className="enter display mt-3 text-5xl text-forest">Inmobiliarias autorizadas</h1>
-      <p className="mt-4 max-w-2xl text-sm leading-6">Cada socio conserva su nombre. Los perfiles de esta etapa están marcados como prueba y no tienen datos de contacto reales.</p>
+      <p className="mt-4 max-w-2xl text-sm leading-6">Cada publicación indica quién la comercializa. El nombre del responsable es el que aparece en la ficha.</p>
       <ul className="mt-10 grid gap-6 md:grid-cols-2">
         {agencies.map((agency) => {
           const count = store.properties.filter((property) => property.agencyId === agency.id && isPublicProperty(property, store.agencies)).length;

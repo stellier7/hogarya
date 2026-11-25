@@ -16,7 +16,7 @@ export default function ContactPage() {
           Use este formulario para una consulta general o para pedir autorización como agente o inmobiliaria. No publicamos un teléfono, un correo ni una dirección hasta que sean oficiales.
         </p>
         <p className="mt-6 text-sm leading-6">
-          WhatsApp del marketplace aparece en las fichas solo cuando hay un número configurado en el servidor. Los agentes de prueba no tienen número.
+          El teléfono y el WhatsApp de una propiedad son los del responsable que aparece en su ficha.
         </p>
       </div>
       <InquiryForm source="partner" submitLabel="Enviar mensaje" />

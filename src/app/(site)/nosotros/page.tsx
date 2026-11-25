@@ -22,7 +22,7 @@ export default function AboutPage() {
           Diversa y Altair Real Estate son referencias de cómo trabaja una inmobiliaria con su propio nombre, su inventario y su relación con el cliente. Esas marcas no se mezclan con Hogar Ya. Cuando un socio entra a la plataforma, aparece con su identidad en las fichas que le corresponden.
         </p>
         <p>
-          Todavía no hay teléfono, correo, dirección ni redes oficiales publicados. Esos datos se agregarán cuando la empresa los confirme. El catálogo visible hoy está marcado como prueba.
+          Todavía no hay teléfono, correo, dirección ni redes oficiales de Hogar Ya. Esos datos se agregarán cuando la empresa los confirme. Cada ficha publica el contacto de quien la comercializa.
         </p>
       </div>
       <div className="mt-10 flex flex-wrap gap-3">

@@ -20,7 +20,7 @@ export default async function AdminHome() {
     <div>
       <p className="kicker">Resumen</p>
       <h1 className="display mt-3 text-4xl text-forest">Hola, {user.name}</h1>
-      <p className="mt-3 max-w-xl text-sm leading-6">Las fichas de demostración siguen marcadas como prueba y no se indexan. Un agente solo ve su inventario.</p>
+      <p className="mt-3 max-w-xl text-sm leading-6">El catálogo público muestra las fichas publicadas. Un agente solo ve su inventario.</p>
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map(([label, value, href]) => (
           <Link key={String(label)} href={String(href)} className="sheet bg-white p-5 transition duration-300 hover:-translate-y-1 motion-reduce:transform-none">
