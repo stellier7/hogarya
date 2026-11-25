@@ -15,7 +15,7 @@ export function InquiryForm({
 }) {
   const [state, action, pending] = useActionState(submitInquiry, idleFormState);
   if (state.status === "success") {
-    return <p role="status" className="border border-line bg-white px-5 py-6 text-sm leading-6">{state.message}</p>;
+    return <p role="status" className="sheet bg-white px-5 py-6 text-sm leading-6">{state.message}</p>;
   }
   return (
     <form action={action} className="relative grid gap-4" noValidate>

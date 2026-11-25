@@ -24,7 +24,7 @@ export default async function AgentsAdminPage({ searchParams }: Props) {
       </div>
       <ul className="grid gap-3">
         {agents.map((agent) => (
-          <li key={agent.id} className="border-t border-line py-3 text-sm">
+          <li key={agent.id} className="sheet px-4 py-3 text-sm">
             <p>{agent.name}</p>
             <p className="text-charcoal/70">{store.agencies.find((agency) => agency.id === agent.agencyId)?.tradeName} · {agent.authorized ? "autorizado" : "sin autorización"}</p>
           </li>

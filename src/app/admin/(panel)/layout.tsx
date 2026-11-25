@@ -33,7 +33,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         <div className="px-5 py-6"><Logo tone="ivory" /></div>
         <nav className="grid px-3" aria-label="Panel">
           {linksFor(user).map((link) => (
-            <Link key={link.href} href={link.href} className="px-3 py-2 text-sm text-ivory/80 hover:text-ivory">{link.label}</Link>
+            <Link key={link.href} href={link.href} className="rounded-full px-3 py-2 text-sm text-ivory/80 transition-colors duration-300 hover:bg-ivory/10 hover:text-ivory">{link.label}</Link>
           ))}
         </nav>
         <p className="px-6 py-4 text-xs text-ivory/60">{user.name}<br />{user.role}</p>

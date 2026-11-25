@@ -12,7 +12,7 @@ export default async function LoginPage() {
   return (
     <main className="mx-auto grid min-h-screen max-w-md content-center px-5 py-16">
       <Logo />
-      <h1 className="display mt-8 text-4xl text-forest">Panel</h1>
+      <h1 className="enter display mt-8 text-4xl text-forest">Panel</h1>
       {!sessionSecret() ? (
         <p className="mt-4 text-sm leading-6">Defina HOGAR_YA_SESSION_SECRET en el servidor. Sin esa clave no se puede iniciar sesión.</p>
       ) : null}

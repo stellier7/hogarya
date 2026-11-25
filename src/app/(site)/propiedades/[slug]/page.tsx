@@ -75,7 +75,7 @@ export default async function PropertyPage({ params }: Props) {
               <p key={paragraph.slice(0, 24)} className="mt-4">{paragraph}</p>
             ))}
           </div>
-          <dl className="mt-10 grid gap-px border border-line bg-line sm:grid-cols-2">
+          <dl className="sheet mt-10 grid gap-px overflow-hidden bg-line sm:grid-cols-2">
             {specs.map(([label, value]) => (
               <div key={label} className="bg-ivory px-4 py-4">
                 <dt className="kicker">{label}</dt>
@@ -95,7 +95,7 @@ export default async function PropertyPage({ params }: Props) {
           ) : null}
         </div>
         <aside className="grid content-start gap-8 lg:sticky lg:top-24 lg:self-start">
-          <section className="border border-line p-6">
+          <section className="sheet p-6">
             <p className="kicker">Responsable</p>
             <h2 className="display mt-3 text-3xl text-forest">{agent?.name ?? "Agente por asignar"}</h2>
             <p className="mt-2 text-sm">{agency?.tradeName}</p>
@@ -128,7 +128,7 @@ export default async function PropertyPage({ params }: Props) {
           </div>
         </section>
       ) : null}
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-ivory p-3 md:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-30 rounded-t-[1.5rem] border-t border-line bg-ivory p-3 shadow-[0_-12px_30px_rgb(23_43_40/8%)] md:hidden">
         <a href="#solicitud" className="btn w-full">Solicitar información</a>
       </div>
       <p className="sr-only">{siteUrl()}/propiedades/{property.slug}</p>

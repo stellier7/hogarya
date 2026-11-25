@@ -14,5 +14,5 @@ const messages: Record<string, string> = {
 
 export function AdminNotice({ code }: { code?: string }) {
   if (!code || !messages[code]) return null;
-  return <p role="status" className="border border-gold bg-white px-4 py-3 text-sm">{messages[code]}</p>;
+  return <p role="status" className="rounded-[1.25rem] border border-gold bg-white px-4 py-3 text-sm">{messages[code]}</p>;
 }

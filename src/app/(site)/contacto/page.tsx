@@ -11,7 +11,7 @@ export default function ContactPage() {
     <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 lg:grid-cols-[0.8fr_1fr]">
       <div>
         <p className="kicker">Contacto</p>
-        <h1 className="display mt-3 text-5xl text-forest">Escríbanos</h1>
+        <h1 className="enter display mt-3 text-5xl text-forest">Escríbanos</h1>
         <p className="mt-4 text-sm leading-6 text-charcoal/80">
           Use este formulario para una consulta general o para pedir autorización como agente o inmobiliaria. No publicamos un teléfono, un correo ni una dirección hasta que sean oficiales.
         </p>

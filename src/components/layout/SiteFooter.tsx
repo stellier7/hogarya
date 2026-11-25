@@ -16,14 +16,14 @@ export function SiteFooter() {
           <p className="text-[0.72rem] uppercase tracking-[0.18em]">Explorar</p>
           <span className="mt-3 block h-px w-8 bg-gold" />
           <ul className="mt-4 grid gap-2 text-sm">
-            <li><Link href="/comprar">Comprar</Link></li>
-            <li><Link href="/alquilar">Alquilar</Link></li>
-            <li><Link href="/propiedades">Todas las propiedades</Link></li>
-            <li><Link href="/publicar">Publicar propiedad</Link></li>
-            <li><Link href="/inmobiliarias">Inmobiliarias</Link></li>
-            <li><Link href="/nosotros">Nosotros</Link></li>
-            <li><Link href="/contacto">Contacto</Link></li>
-            <li><Link href="/marca">Sistema visual</Link></li>
+            <li><Link className="transition-colors duration-300 hover:text-gold" href="/comprar">Comprar</Link></li>
+            <li><Link className="transition-colors duration-300 hover:text-gold" href="/alquilar">Alquilar</Link></li>
+            <li><Link className="transition-colors duration-300 hover:text-gold" href="/propiedades">Todas las propiedades</Link></li>
+            <li><Link className="transition-colors duration-300 hover:text-gold" href="/publicar">Publicar propiedad</Link></li>
+            <li><Link className="transition-colors duration-300 hover:text-gold" href="/inmobiliarias">Inmobiliarias</Link></li>
+            <li><Link className="transition-colors duration-300 hover:text-gold" href="/nosotros">Nosotros</Link></li>
+            <li><Link className="transition-colors duration-300 hover:text-gold" href="/contacto">Contacto</Link></li>
+            <li><Link className="transition-colors duration-300 hover:text-gold" href="/marca">Sistema visual</Link></li>
           </ul>
         </div>
         <div>
@@ -32,7 +32,7 @@ export function SiteFooter() {
           <ul className="mt-4 grid gap-2 text-sm">
             {zones.map((zone) => (
               <li key={zone.slug}>
-                <Link href={`/zonas/${zone.slug}`}>{zone.city}</Link>
+                <Link className="transition-colors duration-300 hover:text-gold" href={`/zonas/${zone.slug}`}>{zone.city}</Link>
               </li>
             ))}
           </ul>

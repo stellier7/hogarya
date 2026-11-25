@@ -12,7 +12,7 @@ export default function PublishPage() {
     <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 lg:grid-cols-2">
       <section id="propietarios">
         <p className="kicker">Propietarios</p>
-        <h1 className="display mt-3 text-5xl text-forest">Solicite que Hogar Ya comercialice su propiedad</h1>
+        <h1 className="enter display mt-3 text-5xl text-forest">Solicite que Hogar Ya comercialice su propiedad</h1>
         <p className="mt-4 text-sm leading-6 text-charcoal/80">
           Este formulario no publica el inmueble. Llega al equipo de Hogar Ya para revisión y seguimiento. El nombre, el teléfono y el correo que escriba se guardan como una solicitud.
         </p>
@@ -20,7 +20,7 @@ export default function PublishPage() {
           <CaptureForm />
         </div>
       </section>
-      <section className="bg-forest px-8 py-10 text-ivory lg:px-10">
+      <section className="rounded-[1.5rem] bg-forest px-8 py-10 text-ivory lg:px-10">
         <p className="text-[0.72rem] uppercase tracking-[0.18em] text-ivory/70">Agentes e inmobiliarias</p>
         <h2 className="display mt-3 text-4xl">La publicación directa es para socios autorizados</h2>
         <p className="mt-4 text-sm leading-6 text-ivory/80">

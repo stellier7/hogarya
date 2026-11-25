@@ -92,9 +92,9 @@ export function CatalogScreen({
           </div>
           <p className="text-sm">{page.total} {page.total === 1 ? "resultado" : "resultados"}</p>
         </div>
-        <div className="mt-4 flex gap-4 text-[0.72rem] uppercase tracking-[0.16em]">
-          <Link href={catalogHref(query, { vista: "cuadricula", page: 1 })} aria-current={query.vista === "cuadricula" ? "page" : undefined} className={query.vista === "cuadricula" ? "text-forest" : "text-charcoal/60"}>Cuadrícula</Link>
-          <Link href={catalogHref(query, { vista: "lista", page: 1 })} aria-current={query.vista === "lista" ? "page" : undefined} className={query.vista === "lista" ? "text-forest" : "text-charcoal/60"}>Lista</Link>
+        <div className="mt-4 flex gap-2 text-[0.72rem] uppercase tracking-[0.16em]">
+          <Link href={catalogHref(query, { vista: "cuadricula", page: 1 })} aria-current={query.vista === "cuadricula" ? "page" : undefined} className="chip">Cuadrícula</Link>
+          <Link href={catalogHref(query, { vista: "lista", page: 1 })} aria-current={query.vista === "lista" ? "page" : undefined} className="chip">Lista</Link>
         </div>
         {page.items.length === 0 ? (
           <p className="mt-10 max-w-lg text-sm leading-6">No hay propiedades publicadas con esos filtros. Pruebe otra ciudad, otro tipo o un rango de precio distinto.</p>
@@ -106,9 +106,9 @@ export function CatalogScreen({
           </div>
         )}
         {page.pages > 1 ? (
-          <nav className="mt-10 flex gap-4 text-sm" aria-label="Páginas">
+          <nav className="mt-10 flex gap-2 text-sm" aria-label="Páginas">
             {Array.from({ length: page.pages }, (_, index) => index + 1).map((number) => (
-              <Link key={number} href={catalogHref(query, { page: number })} aria-current={number === page.page ? "page" : undefined} className={number === page.page ? "text-forest" : "text-charcoal/60"}>
+              <Link key={number} href={catalogHref(query, { page: number })} aria-current={number === page.page ? "page" : undefined} className="chip grid h-10 w-10 place-items-center p-0">
                 {number}
               </Link>
             ))}

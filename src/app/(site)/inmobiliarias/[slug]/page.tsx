@@ -34,7 +34,7 @@ export default async function AgencyPage({ params }: Props) {
       <h2 className="display mt-12 text-3xl text-forest">Agentes</h2>
       <ul className="mt-4 grid gap-4 md:grid-cols-2">
         {agents.map((agent) => (
-          <li key={agent.id} className="border-t border-line py-4">
+          <li key={agent.id} className="sheet px-5 py-4">
             <p className="text-lg">{agent.name}</p>
             <p className="mt-2 text-sm leading-6 text-charcoal/75">{agent.bio}</p>
           </li>

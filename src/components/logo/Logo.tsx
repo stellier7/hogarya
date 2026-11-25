@@ -24,13 +24,17 @@ export function Logo({ tone = "forest", variant = "horizontal", className = "" }
   if (variant === "mark") {
     return (
       <span className={`inline-flex ${color} ${className}`}>
-        <Mark />
+        <span className="grid h-14 w-14 place-items-center rounded-full border border-current/25">
+          <Mark />
+        </span>
       </span>
     );
   }
   return (
     <span className={`inline-flex items-center gap-3 ${color} ${variant === "vertical" ? "flex-col text-center" : ""} ${className}`}>
-      <Mark className="h-11 w-11 shrink-0" />
+      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-current/25">
+        <Mark className="h-8 w-8" />
+      </span>
       <span className="grid gap-1">
         <span className="display text-[1.35rem] leading-none tracking-[0.18em]">HOGAR YA</span>
         <span className="text-[0.62rem] uppercase tracking-[0.22em] opacity-75">Bienes raíces · Honduras</span>

@@ -22,7 +22,7 @@ export default async function CapturesPage({ searchParams }: Props) {
       {store.captures.length === 0 ? <p className="mt-6 text-sm">Todavía no hay solicitudes.</p> : null}
       <ul className="mt-6 grid gap-4">
         {store.captures.map((request) => (
-          <li key={request.id} className="border border-line p-4 text-sm">
+          <li key={request.id} className="sheet p-4 text-sm">
             <p className="text-lg">{request.name}</p>
             <p>{request.email} · {request.phone}</p>
             <p className="mt-2">{request.location} · {kindLabel(request.kind)} · {operationLabel(request.operation)} · {formatPrice(request.estimatedPrice, request.operation)}</p>

@@ -13,7 +13,7 @@ export default async function ActivityPage() {
       <h1 className="display mt-3 text-4xl text-forest">Actividad</h1>
       <ul className="mt-8 grid gap-3 text-sm">
         {store.audit.map((event) => (
-          <li key={event.id} className="border-t border-line py-3">
+          <li key={event.id} className="sheet px-4 py-3">
             <p>{event.summary}</p>
             <p className="text-charcoal/70">{formatDateTime(event.at)} · {event.actor}</p>
           </li>
