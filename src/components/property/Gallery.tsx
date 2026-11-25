@@ -14,7 +14,7 @@ export function Gallery({ images, title }: { images: PropertyImage[]; title: str
   return (
     <div className="px-3 pt-3 md:px-5">
       <div className="media relative min-h-[58vh] bg-forest md:min-h-[72vh]">
-        <Parallax strength={32}>
+        <Parallax strength={88}>
           <Image key={current.src} src={current.src} alt={current.alt || title} fill priority sizes="100vw" className="fade-swap object-cover" />
         </Parallax>
       </div>

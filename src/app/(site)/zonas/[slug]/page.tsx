@@ -38,7 +38,7 @@ export default async function ZonePage({ params }: Props) {
   return (
     <article>
       <section className="relative min-h-[46vh] overflow-hidden rounded-b-[2.5rem] bg-forest text-ivory">
-        <Parallax strength={48}>
+        <Parallax strength={110}>
           <Image src={zone.image} alt={`Imagen de referencia para ${zone.city}. No es una fotografía de la ciudad.`} fill priority sizes="100vw" className="object-cover opacity-75" />
         </Parallax>
         <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/40 to-transparent" />

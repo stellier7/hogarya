@@ -53,7 +53,7 @@ export default async function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="relative min-h-[88vh] overflow-hidden rounded-b-[2.75rem] bg-forest text-ivory">
-        <Parallax strength={64}>
+        <Parallax strength={160}>
           <Image
             src="/demo/hero.jpg"
             alt="Fotografía de referencia de una casa contemporánea. No es una propiedad de Hogar Ya."
@@ -122,7 +122,7 @@ export default async function HomePage() {
         <div className="mt-10 grid gap-4 md:grid-cols-4">
           {zones.map((zone, index) => (
             <Link key={zone.slug} href={`/zonas/${zone.slug}`} className={`media group relative block min-h-56 bg-forest ${index < 2 ? "md:col-span-2 md:min-h-80" : ""}`}>
-              <Parallax strength={22}>
+              <Parallax strength={56}>
               <Image src={zone.image} alt={`Imagen de referencia para ${zone.city}. No es una fotografía de la ciudad.`} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover opacity-80 transition duration-700 group-hover:scale-[1.04] motion-reduce:transition-none" />
               </Parallax>
               <span className="absolute inset-0 bg-gradient-to-t from-forest via-transparent to-transparent" />
