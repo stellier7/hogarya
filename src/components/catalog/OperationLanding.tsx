@@ -41,7 +41,7 @@ export async function OperationLanding({
   return (
     <CatalogScreen
       title={title}
-      intro="Los filtros usan el inventario disponible. Las fichas marcadas como prueba son demostración."
+      intro="Compre o alquile con el agente responsable de cada publicación. Ajuste ubicación, tipo, precio y características."
       query={query}
       properties={properties}
       agencies={store.agencies}

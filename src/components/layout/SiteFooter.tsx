@@ -60,7 +60,7 @@ export function SiteFooter() {
       <div className="border-t border-ivory/15">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-6 text-xs leading-5 text-ivory/70 md:flex-row md:justify-between">
           <p>Hogar Ya. Teléfono, correo, dirección y redes oficiales pendientes de confirmación.</p>
-          <p>Los registros marcados como prueba no son ofertas reales.</p>
+          <p>Cada ficha indica quién la comercializa y si está verificada.</p>
         </div>
       </div>
       <div className="border-t border-ivory/15">

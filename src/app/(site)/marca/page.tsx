@@ -52,7 +52,7 @@ export default function BrandPage() {
             <div className="absolute bottom-0 left-0 right-0 p-6">
               <p className="text-[0.68rem] uppercase tracking-[0.18em]">Dato de muestra · En venta</p>
               <p className="display mt-2 text-4xl">L 8,450,000</p>
-              <p className="mt-2 text-sm">Tegucigalpa · HY-DEMO-1001</p>
+              <p className="mt-2 text-sm">Tegucigalpa · muestra de marca</p>
               <p className="mt-4 text-xs uppercase tracking-[0.2em]">Hogar Ya</p>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default function BrandPage() {
           <p className="text-[0.72rem] uppercase tracking-[0.22em]">Se vende</p>
           <p className="display mt-3 text-4xl">HOGAR YA</p>
           <span className="mt-4 block h-px w-10 bg-gold" />
-          <p className="mt-4 text-xs uppercase tracking-[0.16em]">HY-DEMO-1001 · muestra</p>
+          <p className="mt-4 text-xs uppercase tracking-[0.16em]">Muestra de marca</p>
         </div>
       </section>
 

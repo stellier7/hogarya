@@ -35,9 +35,11 @@ const reasons = [
 export default async function HomePage() {
   const store = await loadCatalog();
   const published = sortProperties(publicProperties(store), "recientes");
-  const featured = published.filter((property) => property.featured).slice(0, 3);
+  const featured = published.filter((property) => property.featured);
   const featuredIds = new Set(featured.map((property) => property.id));
   const recent = published.filter((property) => !featuredIds.has(property.id)).slice(0, 4);
+  const spotlight = featured.slice(0, 3);
+  const moreFeatured = featured.slice(3);
   const agencies = new Map(store.agencies.map((agency) => [agency.id, agency]));
   const jsonLd = {
     "@context": "https://schema.org",
@@ -87,20 +89,27 @@ export default async function HomePage() {
         </div>
         </Reveal>
         <div className="mt-10 grid gap-10 lg:grid-cols-12">
-          {featured[0] ? (
+          {spotlight[0] ? (
             <div className="lg:col-span-7">
-              <PropertyCard property={featured[0]} agency={agencies.get(featured[0].agencyId)} />
+              <PropertyCard property={spotlight[0]} agency={agencies.get(spotlight[0].agencyId)} />
             </div>
           ) : null}
           <div className="grid content-start gap-10 lg:col-span-5">
-            {featured.slice(1).map((property) => (
+            {spotlight.slice(1).map((property) => (
               <PropertyCard key={property.id} property={property} agency={agencies.get(property.agencyId)} />
             ))}
           </div>
         </div>
+        {moreFeatured.length > 0 ? (
+          <div className="mt-10 grid gap-10 lg:grid-cols-2">
+            {moreFeatured.map((property) => (
+              <PropertyCard key={property.id} property={property} agency={agencies.get(property.agencyId)} />
+            ))}
+          </div>
+        ) : null}
       </section>
 
-      <section className="border-y border-line bg-white">
+      {recent.length > 0 ? <section className="border-y border-line bg-white">
         <div className="mx-auto max-w-6xl px-5 py-16">
           <Reveal>
           <p className="kicker">Recién publicadas</p>
@@ -112,7 +121,7 @@ export default async function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> : null}
 
       <section className="mx-auto max-w-6xl px-5 py-20">
         <Reveal>
@@ -167,7 +176,7 @@ export default async function HomePage() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/contacto" className="btn">Solicitar autorización</Link>
-            <Link href="/inmobiliarias" className="btn-line">Ver socios de prueba</Link>
+            <Link href="/inmobiliarias" className="btn-line">Ver inmobiliarias</Link>
           </div>
         </div>
         </Reveal>

@@ -9,7 +9,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const agency = (await loadCatalog()).agencies.find((item) => item.slug === slug && item.authorized);
+  const agency = (await loadCatalog()).agencies.find((item) => item.slug === slug && item.authorized && !item.demo);
   if (!agency) return { title: "Inmobiliaria" };
   return {
     title: agency.tradeName,
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function AgencyPage({ params }: Props) {
   const { slug } = await params;
   const store = await loadCatalog();
-  const agency = store.agencies.find((item) => item.slug === slug && item.authorized);
+  const agency = store.agencies.find((item) => item.slug === slug && item.authorized && !item.demo);
   if (!agency) notFound();
   const agents = store.agents.filter((agent) => agent.agencyId === agency.id && agent.authorized);
   const properties = store.properties.filter((property) => property.agencyId === agency.id && isPublicProperty(property, store.agencies));
