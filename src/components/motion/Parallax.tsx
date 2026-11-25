@@ -46,7 +46,7 @@ export function Parallax({
 
   return (
     <div ref={frame} className={`absolute inset-0 overflow-hidden ${className}`}>
-      <div ref={layer} className="absolute -inset-y-[12%] inset-x-0">
+      <div ref={layer} className="absolute -inset-y-[24%] inset-x-0">
         <div className="relative h-full w-full">{children}</div>
       </div>
     </div>
