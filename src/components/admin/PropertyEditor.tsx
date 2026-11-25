@@ -4,7 +4,7 @@ import { useActionState, useState } from "react";
 import { saveProperty } from "@/app/actions/properties";
 import { idleFormState } from "@/domain/forms";
 import { propertyKinds, publicationStatuses, statusLabel } from "@/domain/labels";
-import type { Agency, Agent, Operation, PropertyKind, PublicationStatus } from "@/domain/types";
+import type { Agency, Agent, AreaUnit, Currency, Operation, PropertyKind, PublicationStatus } from "@/domain/types";
 import { zones } from "@/domain/zones";
 
 export type PropertyDraft = {
@@ -26,6 +26,8 @@ export type PropertyDraft = {
   featured: boolean;
   agencyId: string;
   agentId: string;
+  currency?: Currency;
+  lotAreaUnit?: AreaUnit;
 };
 
 export function PropertyEditor({
@@ -58,12 +60,12 @@ export function PropertyEditor({
         <Select name="kind" label="Tipo" defaultValue={draft.kind} error={state.fieldErrors.kind} options={propertyKinds.map((kind) => ({ id: kind.id, label: kind.singular }))} />
         <Select name="citySlug" label="Ciudad" defaultValue={draft.citySlug} error={state.fieldErrors.citySlug} options={zones.map((zone) => ({ id: zone.slug, label: zone.city }))} />
         <Text name="zone" label="Zona" defaultValue={draft.zone} error={state.fieldErrors.zone} />
-        <Text name="price" label="Precio en lempiras" defaultValue={draft.price} error={state.fieldErrors.price} />
+        <Text name="price" label={draft.currency === "USD" ? "Precio en dólares" : "Precio en lempiras"} defaultValue={draft.price} error={state.fieldErrors.price} />
         <Text name="bedrooms" label="Habitaciones" defaultValue={draft.bedrooms} error={state.fieldErrors.bedrooms} />
         <Text name="bathrooms" label="Baños" defaultValue={draft.bathrooms} error={state.fieldErrors.bathrooms} />
         <Text name="parking" label="Estacionamientos" defaultValue={draft.parking} error={state.fieldErrors.parking} />
         <Text name="constructionArea" label="Área de construcción m²" defaultValue={draft.constructionArea} error={state.fieldErrors.constructionArea} />
-        <Text name="lotArea" label="Área de terreno m²" defaultValue={draft.lotArea} error={state.fieldErrors.lotArea} />
+        <Text name="lotArea" label={draft.lotAreaUnit === "vara2" ? "Área de terreno varas²" : "Área de terreno m²"} defaultValue={draft.lotArea} error={state.fieldErrors.lotArea} />
       </div>
       <label className="grid gap-2 text-sm">
         <span className="kicker">Descripción</span>

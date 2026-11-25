@@ -26,6 +26,10 @@ export type PropertyImage = {
   alt: string;
 };
 
+export type Currency = "HNL" | "USD";
+
+export type AreaUnit = "m2" | "vara2";
+
 export type Agency = {
   id: string;
   slug: string;
@@ -72,6 +76,9 @@ export type Property = {
   verification: VerificationRecord | null;
   demo: boolean;
   price: number | null;
+  /** Omitted currency is lempiras. Dollar listings set USD. */
+  currency?: Currency;
+  lotAreaUnit?: AreaUnit;
   citySlug: string;
   city: string;
   department: string;

@@ -27,6 +27,8 @@ export async function editorContext(user: SessionUser, property?: Property) {
         featured: property.featured,
         agencyId: property.agencyId,
         agentId: property.agentId,
+        currency: property.currency,
+        lotAreaUnit: property.lotAreaUnit,
       }
     : {
         title: "",

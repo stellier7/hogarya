@@ -12,6 +12,19 @@ function agent(entry: Agent): Agent {
 
 const agencies: Agency[] = [
   agency({
+    id: "agency-hatillo",
+    slug: "contacto-el-hatillo",
+    tradeName: "Información El Hatillo",
+    description:
+      "Contacto publicado con la casa de El Hatillo, km 7. Esta ficha no nombra una inmobiliaria. La información y las citas se atienden en los teléfonos indicados.",
+    phone: "9839-9087 / 8933-9525",
+    whatsappE164: null,
+    email: null,
+    location: "El Hatillo, km 7, Tegucigalpa",
+    authorized: true,
+    demo: false,
+  }),
+  agency({
     id: "agency-centro",
     slug: "socio-prueba-centro",
     tradeName: "Socio de prueba Centro",
@@ -53,6 +66,19 @@ const agencies: Agency[] = [
 ];
 
 const agents: Agent[] = [
+  agent({
+    id: "agent-hatillo",
+    agencyId: "agency-hatillo",
+    name: "Información y citas",
+    photo: null,
+    bio: "Teléfonos indicados para la casa de El Hatillo. No se publicó el nombre de un agente.",
+    phone: "9839-9087 / 8933-9525",
+    whatsappE164: null,
+    email: null,
+    location: "El Hatillo, Tegucigalpa",
+    authorized: true,
+    demo: false,
+  }),
   agent({
     id: "agent-ana",
     agencyId: "agency-centro",
@@ -112,6 +138,59 @@ function listing(entry: Property): Property {
 }
 
 const properties: Property[] = [
+  listing({
+    id: "p-casa-hatillo",
+    referenceCode: "HY-1041",
+    slug: "casa-el-hatillo-km-7",
+    title: "Casa en El Hatillo, km 7",
+    operation: "sale",
+    kind: "house",
+    status: "published",
+    featured: true,
+    verification: null,
+    demo: false,
+    price: 600000,
+    currency: "USD",
+    citySlug: "tegucigalpa",
+    city: "Tegucigalpa",
+    department: "Francisco Morazán",
+    zone: "El Hatillo, km 7",
+    description:
+      "Disfrutá de la tranquilidad, privacidad y naturaleza en El Hatillo, km 7, una de las zonas residenciales de Tegucigalpa.\n\nLa casa está en circuito cerrado, cerca del restaurante La Cumbre, con acceso por dos calles. El terreno mide 4,000 varas².\n\nTiene 4 habitaciones, sala, comedor, cocina, jardín, 2 terrazas, área social, área de lavandería y estacionamiento para 6 vehículos.\n\nPrecio de venta: USD 600,000. Información y citas: 9839-9087 y 8933-9525.",
+    bedrooms: 4,
+    bathrooms: null,
+    parking: 6,
+    constructionArea: null,
+    lotArea: 4000,
+    lotAreaUnit: "vara2",
+    amenities: [
+      "Circuito cerrado",
+      "Acceso por dos calles",
+      "Cerca de La Cumbre",
+      "Sala",
+      "Comedor",
+      "Cocina",
+      "Jardín",
+      "2 terrazas",
+      "Área social",
+      "Área de lavandería",
+      "Estacionamiento para 6 vehículos",
+    ],
+    images: [
+      { src: "/listings/el-hatillo/fachada.jpg", alt: "Fachada de la casa en El Hatillo, con palmeras, jardín y dos vehículos bajo el garaje." },
+      { src: "/listings/el-hatillo/entrada.jpg", alt: "Entrada principal de la casa en El Hatillo, con escaleras, puerta oscura y palmeras." },
+      { src: "/listings/el-hatillo/porton.jpg", alt: "Portón de hierro negro y muro de piedra en el acceso de la casa en El Hatillo." },
+      { src: "/listings/el-hatillo/sala.jpg", alt: "Sala amplia con chimenea de piedra y puertas de vidrio hacia el jardín." },
+      { src: "/listings/el-hatillo/estancia.jpg", alt: "Estancia con muro de piedra, piso de cerámica y salida al jardín." },
+      { src: "/listings/el-hatillo/bano.jpg", alt: "Baño con tina, techo de madera y ventana con cortina." },
+    ],
+    agencyId: "agency-hatillo",
+    agentId: "agent-hatillo",
+    rejectionNote: null,
+    publishedAt: "2026-11-25T04:29:00.000Z",
+    createdAt: "2026-11-25T04:29:00.000Z",
+    updatedAt: "2026-11-25T04:29:00.000Z",
+  }),
   listing({
     id: "p-casa-lomas",
     referenceCode: "HY-DEMO-1001",
@@ -623,7 +702,16 @@ export function createSeedStore(): StoreData {
         action: "seed",
         entityType: "property",
         entityId: "catalogo",
-        summary: "Se cargó el catálogo de demostración. Ninguna ficha está verificada ni representa una oferta real.",
+        summary: "Se cargó el catálogo de demostración. Las fichas marcadas como prueba no representan una oferta real.",
+      },
+      {
+        id: "audit-hatillo",
+        at: "2026-11-25T04:29:00.000Z",
+        actor: "sistema",
+        action: "publish",
+        entityType: "property",
+        entityId: "p-casa-hatillo",
+        summary: "Se publicó la casa de El Hatillo, km 7, en USD 600,000, con los teléfonos indicados. La ficha no está verificada.",
       },
     ],
   };

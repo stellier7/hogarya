@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PropertyCard } from "@/components/property/PropertyCard";
+import { phoneLinks } from "@/domain/format";
 import { isPublicProperty } from "@/domain/filters";
 import { loadCatalog } from "@/server/catalog";
 
@@ -30,6 +31,15 @@ export default async function AgencyPage({ params }: Props) {
       <h1 className="display mt-3 text-5xl text-forest">{agency.tradeName}</h1>
       <p className="mt-4 max-w-2xl text-sm leading-6">{agency.description}</p>
       <p className="mt-3 text-sm">{agency.location}</p>
+      {phoneLinks(agency.phone).length > 0 ? (
+        <ul className="mt-4 grid gap-2 text-sm">
+          {phoneLinks(agency.phone).map((phone) => (
+            <li key={phone.tel}>
+              <a className="underline" href={phone.tel}>{phone.label}</a>
+            </li>
+          ))}
+        </ul>
+      ) : null}
       {!agency.phone && !agency.email ? <p className="mt-2 text-sm text-charcoal/70">Sin teléfono ni correo reales en este perfil.</p> : null}
       <h2 className="display mt-12 text-3xl text-forest">Agentes</h2>
       <ul className="mt-4 grid gap-4 md:grid-cols-2">

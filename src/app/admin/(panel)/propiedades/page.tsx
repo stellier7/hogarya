@@ -39,7 +39,7 @@ export default async function AdminPropertiesPage({ searchParams }: Props) {
               <Link href={`/admin/propiedades/${property.id}`} className="text-lg">{property.title}</Link>
               <p className="text-sm text-charcoal/70">{property.referenceCode} · {property.city} · {agencies.get(property.agencyId)}</p>
             </div>
-            <p className="text-sm">{formatPrice(property.price, property.operation)}</p>
+            <p className="text-sm">{formatPrice(property.price, property.operation, property.currency)}</p>
             <p className="text-xs uppercase tracking-[0.14em]">{statusLabel(property.status)}{property.demo ? " · prueba" : ""}</p>
           </li>
         ))}

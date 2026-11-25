@@ -110,6 +110,8 @@ export async function saveProperty(_previous: FormState, formData: FormData): Pr
       parking: input.parking,
       constructionArea: input.constructionArea,
       lotArea: input.lotArea,
+      currency: current?.currency,
+      lotAreaUnit: current?.lotAreaUnit,
       amenities: input.amenities,
       images: current?.images ?? [],
       agencyId: agency.id,

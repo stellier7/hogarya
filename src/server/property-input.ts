@@ -71,7 +71,7 @@ export function readPropertyInput(formData: FormData): { value: PropertyInput | 
   if (priceRaw) {
     const amount = Number(priceRaw.replace(/[^\d.]/g, ""));
     if (!Number.isFinite(amount) || amount <= 0 || amount > 1_000_000_000) {
-      errors.price = "Escriba un precio en lempiras o déjelo vacío para consultar.";
+      errors.price = "Escriba un precio o déjelo vacío para consultar.";
     } else {
       price = Math.round(amount);
     }
