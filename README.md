@@ -38,6 +38,12 @@ El inventario de demostración vive en `src/data/seed.ts`. Las fotografías son 
 
 El almacenamiento es un archivo local para esta etapa. `src/server/store.ts` concentra la lectura y la escritura; una base de datos de producción puede reemplazar ese módulo sin cambiar los permisos.
 
+## Cloudflare Workers
+
+El repositorio incluye `wrangler.jsonc` para el Worker `hogarya`. En Workers Builds el comando de build puede seguir siendo `npm run build`: si la variable `WORKERS_CI` está presente, ese comando también genera `.open-next` para que `npx wrangler deploy` o `npx wrangler preview` publiquen el sitio.
+
+Defina `HOGAR_YA_SESSION_SECRET` en Variables and secrets del Worker, no en el repositorio. El catálogo público sale del seed. El panel escribe en un archivo local, así que en Workers esos cambios no se conservan entre peticiones.
+
 ## Comandos
 
 ```bash
